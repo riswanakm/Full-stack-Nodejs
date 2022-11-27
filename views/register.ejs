@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("layouts/header.ejs") -%>
+    <body>
+        <!-- Navigation-->
+        <%- include("layouts/navbar.ejs") -%>
+
+        <!-- Main Content-->
+        <div class="container-xxl courses my-6 py-6 pb-0">
+            <div class="container">
+                <div class="row g-4 justify-content-center">
+        <div class="col-lg-8 my-6 mb-0 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="bg-primary text-center p-5">
+                <h1 class="mb-4">Register here</h1>
+                
+                    
+                    <% if (errors != null && errors.length > 0 ) {%>
+                        <ul class="list-group" ></ul>
+                        <% for (var i = 0; i < errors.length; i++ ){ %>
+                          <li class="list-group-item list-group-item-danger"><%= errors[i] %></li>
+                          <% } %>
+                        </ul> 
+                        <% } %>
+                    <!-- Post preview-->
+                 
+                       <form action="/users/register" method="post">
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                            
+                                 <input  class="form-control" type="text" name="username">
+                                 <label>Username</label>
+                            </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                            
+                                <input class="form-control" type="password" name="password" placeholder="password">
+                                <label>Password</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                            
+                                <input class="form-control" type="password" name="repeat-password" placeholder="password">
+                                <label>Repeat Password</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                            
+                            <select name="userType" class="form-control">
+                                <option value="Driver">Driver</option>
+                                <option value="Examiner">Examiner</option>
+                                <option value="Admin">Admin</option>
+                            </select>
+                            <label>User Type</label>
+                           </div>     
+                        </div>
+                        <div class="form-submit-button">
+                            <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">SignUp</button>
+                        </div>
+                        <a href="/login" class="btn btn-primary text-uppercase"><i>Existing User ? ,Login</i></a>
+                       </form>
+                    </div>  
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+        <!-- Footer-->
+        <%- include("layouts/footer.ejs") -%>
+        <%- include("layouts/scripts.ejs") -%>
+    </body>
+</html>

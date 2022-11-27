@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("layouts/header.ejs") -%>
+    <body>
+        <!-- Navigation-->
+    <%- include("layouts/navbar.ejs") -%>
+         <!-- Page Header Start -->
+    <div class="container-fluid page-header py-6 my-6 mt-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center">
+            <h1 class="display-4 text-white animated slideInDown mb-4">G2 Test</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">G2 Test</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+        <!-- Main Content-->
+        <main class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <% if(successmessage != null && successmessage.length > 0){ %>
+                            <ul class="list-group"></ul>
+                            <% for (var i = 0; i < successmessage.length; i++) { %>
+                            <li class="list-group-item list-group-item-primary"><%= successmessage[i] %></li>
+                            <% } %>
+                            </ul>
+                        <% } %>
+                      
+                        
+                           
+                            <form id="g2form" data-sb-form-api-token="API_TOKEN"  method="post"  action="/save_appointment" enctype="multipart/form-data">
+                               
+                               
+                                <div >
+                                    <div class="overflow-auto">
+                                    <h4>Availabe date and time slot</h4>
+                                    <% for(var i = 0 ; i< (typeof length != "undefined" ? length : 0) ; i++){ %>  
+                                        <input type="radio" id="<%=appointments[i]._id%>"  name="appointment_id" value="<%=appointments[i]._id%>">
+                                        <label for="<%=appointments[i]._id%>"><%=appointments[i].appointment_date %> &nbsp <%= appointments[i].time_slot %></label><br>
+                                    <% } %>
+                                    <br/>
+
+                                    <input id="test_type"  value="G2" name="test_type"  type="hidden" />
+
+                                    <button class="btn btn-primary" id="submitButton" type="submit">Book Appointment</button>
+
+                                    </div>
+                                </div>
+                           
+                                <br />
+                          
+                            </form>
+
+                            <br/>
+                      
+                            <h3>G2 Result</h3>
+                            <br>
+                            <table id="candidateTable" class="table table-striped" cellspacing="0" cellpadding="0">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Last Result
+                                        </td>
+                                        <td>
+                                            <%= user.isPassed ? "Pass" : ( user.isPassed != null ? "Fail" : "") %>
+                                        </td>  
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Comment
+                                        </td>
+                                        <td>
+                                            <%= user.comment %>
+                                        </td>  
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>                      
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Footer-->
+        <%- include("layouts/footer.ejs") -%>
+        <%- include("layouts/scripts.ejs") -%>
+    </body>
+</html>

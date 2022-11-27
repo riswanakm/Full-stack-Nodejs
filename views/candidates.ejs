@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+   
+    <%-include ('layouts/head');-%>
+    <body>
+        <%-include ('layouts/navbar');-%>
+
+            <!-- Page Header Start -->
+    <div class="container-fluid page-header py-6 my-6 mt-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center">
+            <h1 class="display-4 text-white animated slideInDown mb-4">Candidate results</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Candidate results</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+        <!-- Main Content-->
+
+        <div class="container px-lg-6 min-300">
+            <div class="row gx-6 gx-lg-6 justify-content-center">
+                <div class="col-md-6 col-lg-6 col-xl-6">
+        <!-- Main Content-->
+        <main class="mb-10 ">
+            <div class="container px-lg-12 ">
+                <div class="row gx-lg-12  justify-content-center">
+                    <div class="col-md-12 col-lg-12 col-l-12">                        
+                        <h3>Candidates Data</h3>
+                        <div class="my-5">
+                            <table id="candidatesTable" class="table table-striped" cellspacing="0" cellpadding="0">
+                                <thead>
+                                   <tr>
+                                      <th>Username</th>
+                                      <th>Name</th>
+                                      <th>Result</th>
+                                   </tr>
+                                </thead>
+                                <tbody>
+                                    <% for(let i = 0 ; i<userlist.length; i++){ %>
+                                        <tr>
+                                            <td>
+                                                <%=userlist[i].user_name %>
+                                            </td>
+                                            <td>
+                                                <%= userlist[i].firstname %> &nbsp <%= userlist[i].lastname %>
+                                            </td>
+                                            <td>
+                                                <%= userlist[i].isPassed ? "Pass" : "Fail" %>
+                                            </td>  
+                                        </tr>
+                                    <% } %>
+                              </tbody>
+                             </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </main>
+        </div>
+        </div>
+        </div>
+        <%-include ('layouts/footer');-%>
+      
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

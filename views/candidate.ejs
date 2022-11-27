@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include ('layouts/head');-%>
+    <body>
+        <%-include ('layouts/navbar');-%>
+      <!-- Page Header Start -->
+      <div class="container-fluid page-header py-6 my-6 mt-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center">
+            <h1 class="display-4 text-white animated slideInDown mb-4">Candidate Details</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Candidate</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+        <!-- Main Content-->
+
+        <div class="container px-lg-6 min-300">
+            <div class="row gx-6 gx-lg-6 justify-content-center">
+                <div class="col-md-6 col-lg-6 col-xl-6">
+                        <% if(successmessage != null && successmessage.length > 0){ %>
+                            <ul class="list-group"></ul>
+                            <% for (var i = 0; i < successmessage.length; i++) { %>
+                            <li class="list-group-item list-group-item-primary"><%= successmessage[i] %></li>
+                            <% } %>
+                            </ul>
+                        <% } %>
+                        <h3>Canidate Details</h3>
+                        <div class="my-5">
+                            <table id="candidateTable" class="table table-striped" cellspacing="0" cellpadding="0">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Username
+                                        </td>
+                                        <td>
+                                            <%= user.user_name %>
+                                        </td>  
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Name
+                                        </td>
+                                        <td>
+                                            <%= user.firstname %> &nbsp <%= user.lastname %>
+                                        </td>  
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <form id="review" action="/review"  method="post" >
+ 
+                                <div class="form-floating">
+                                    <input class="form-control"  id="comment" type="text"  name="comment" placeholder="Comment" data-sb-validations="required" required />
+                                    <label for="dob">Comment</label>
+                                    <div class="invalid-feedback" data-sb-feedback="comment:required">Comment required.</div>    
+                                </div>
+                                <br/>
+                                <div >
+                                    <input type="radio" id="result" name="result" value="true">
+                                    <label for="pass">Pass</label><br>
+                                    <input type="radio" id="result" name="result" value="false">
+                                    <label for="pass">Fail</label><br>
+                                </div>
+                           
+                                <br />
+                              
+                                <input id="userId"  value="<%= user._id %>" name="userId"  type="hidden" />
+                            
+                                <button class="btn btn-primary" id="submitButton" type="submit">Submit</button>
+                            </form>
+                        </div>                      
+                    </div>
+                </div>
+            </div>
+        </main>
+        <%-include ('layouts/footer');-%>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+       
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>

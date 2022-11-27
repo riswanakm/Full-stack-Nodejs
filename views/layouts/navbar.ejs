@@ -1,0 +1,39 @@
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+      <a href="/" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
+          <h2 class="m-0"><i class="fa fa-car text-primary me-2"></i>Book Drive Test</h2>
+      </a>
+      <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav ms-auto p-4 p-lg-0">
+           
+            <ul class="navbar-nav ms-auto py-4 py-lg-0">
+              <!-- <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/">Dashboard</a></li> -->
+              <% if(!checkUser) { %>
+                <a class="nav-item nav-link" href="/login">Login</a>
+              <% } %>
+              <% if(checkUser) { %>
+                  <% if(usertype == 'driver') { %>
+                    <a class="nav-item nav-link" href="/">Dashboard</a>
+                    <a class="nav-item nav-link" href="/g2">G2 Page</a>
+                    <a class="nav-item nav-link" href="/g">G Page</a>
+                  <% } %>
+                  <% if(usertype == 'admin') { %>
+                    <a class="nav-item nav-link" href="/appointment">Appointments</a>
+                    <a class="nav-item nav-link" href="/candidates">Candidates</a>
+                  <% } %>
+                  <% if(usertype == 'examiner') { %>
+                    <a class="nav-item nav-link" href="/examiner">Examiner</a>
+                  <% } %>
+                  <a class="nav-item nav-link" href="/logout">Log Out</a>
+              <% } %>
+              
+          </ul>           
+                    <a href="#" class="nav-item nav-link">Contact</a>
+          </div>
+          <a href="/auth/login" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Get Started<i class="fa fa-arrow-right ms-3"></i></a>
+      </div>
+  </nav>

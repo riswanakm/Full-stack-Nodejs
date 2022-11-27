@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("layouts/header.ejs") -%>
+    <body>
+        <!-- Navigation-->
+        <%- include("layouts/navbar.ejs") -%>
+        <!-- Page Header Start -->
+    <div class="container-fluid page-header py-6 my-6 mt-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center">
+            <h1 class="display-4 text-white animated slideInDown mb-4">G Test</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">G Test</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+        <!-- Main Content-->
+        <main class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                      
+                        <div class="my-5">
+                            <!-- <div class="form-floating">
+                                <input class="form-control" id="user_name" name="user_name" value="<%=user.user_name%>"
+                                    type="text" placeholder="User Name" readonly />
+                                <label for="name">User Name</label>
+                            </div>
+                            <div class="form-floating">
+                                <input class="form-control" id="firstname" name="firstname" value="<%=user.firstname%>"
+                                    type="text" placeholder="First Name" readonly />
+                                <label for="firstname">First Name</label>
+                            </div>
+                            <div class="form-floating">
+                                <input class="form-control" id="lastname" name="lastname" value="<%=user.lastname%>"
+                                    type="text" placeholder="Last Name" readonly />
+                                <label for="lastname">Last Name</label>
+                            </div>
+                            <div class="form-floating">
+                                <input class="form-control" id="userid" type="text" name="userid"
+                                    value="<%=user.userid%>" placeholder="User ID" readonly />
+                                <label for="userid">User ID</label>
+                            </div> -->
+
+                            <form id="g2form" data-sb-form-api-token="API_TOKEN"  method="post"  action="/save_appointment" enctype="multipart/form-data">
+                           
+                           
+                                <div >
+                                    <div class="overflow-auto">
+                                    <h4>Availabe date and time slot</h4>
+                                    <input type="radio" id="6261ab88c8a7fdcfb477fa50" name="appointment_id" value="6261ab88c8a7fdcfb477fa50">
+                                    <label for="6261ab88c8a7fdcfb477fa50">2022-04-30 &nbsp; 9:30</label><br>
+                                  
+                                    <input type="radio" id="62621fb9a3a366fe8231571b" name="appointment_id" value="62621fb9a3a366fe8231571b">
+                                    <label for="62621fb9a3a366fe8231571b">2022-04-05 &nbsp; 9:00</label><br>
+                                  
+                                    <input type="radio" id="62621fc2a3a366fe82315720" name="appointment_id" value="62621fc2a3a366fe82315720">
+                                    <label for="62621fc2a3a366fe82315720">2022-04-05 &nbsp; 9:30</label><br>
+                                    <br/>
+
+                                    <input id="test_type"  value="G2" name="test_type"  type="hidden" />
+
+                                    <button class="btn btn-primary" id="submitButton" type="submit">Book Appointment</button>
+
+                                    </div>
+                                </div>
+                           
+                                <br />
+                          
+                            </form>
+
+                            <br/>
+
+                           
+                            <br/>
+                            <h3>G2 Result</h3>
+                            <table id="candidateTable" class="table table-striped" cellspacing="0" cellpadding="0">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Last Result
+                                        </td>
+                                        <td>
+                                            <%= user.isPassed ? "Pass" : ( user.isPassed != null ? "Fail" : "") %>
+                                        </td>  
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Comment
+                                        </td>
+                                        <td>
+                                            <%= user.comment %>
+                                        </td>  
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <br>
+                            <form id="gform" method="post"  action="/g/update" enctype="multipart/form-data">
+                                <input class="form-control" id="test_type"  value="G" name="test_type"  type="hidden" />
+                                <button class="btn btn-primary" id="submitButton" type="submit">Apply G Test</button>
+                            </form>
+                            <br>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </main>
+        <!-- Footer-->
+        <%- include("layouts/footer.ejs") -%>
+        <%- include("layouts/scripts.ejs") -%>
+    </body>
+</html>

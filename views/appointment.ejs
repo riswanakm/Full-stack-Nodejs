@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("layouts/header.ejs") -%>
+    <body>
+        <!-- Navigation-->
+        <%- include("layouts/navbar.ejs") -%>
+        <!-- Page Header-->
+        <!-- Page Header Start -->
+    <div class="container-fluid page-header py-6 my-6 mt-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center">
+            <h1 class="display-4 text-white animated slideInDown mb-4">Schedule Appointment</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Appointment</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+        <!-- Main Content-->
+
+        <div class="container px-lg-6 min-300">
+            <div class="row gx-6 gx-lg-6 justify-content-center">
+                <div class="col-md-6 col-lg-6 col-xl-6">
+                    
+                    <% if(validationErrors != null && validationErrors.length > 0){ %>
+                        <ul class="list-group"></ul>
+                        <% for (var i = 0; i < validationErrors.length; i++) { %>
+                        <li class="list-group-item list-group-item-danger"><%= validationErrors[i] %></li>
+                        <% } %>
+                        </ul>
+                    <% } %>
+
+                    <% if(appointment_successmessage != null && appointment_successmessage.length > 0){ %>
+                        <ul class="list-group"></ul>
+                        <% for (var i = 0; i < appointment_successmessage.length; i++) { %>
+                        <li class="list-group-item list-group-item-primary"><%= appointment_successmessage[i] %></li>
+                        <% } %>
+                        </ul>
+                    <% } %>
+
+                    
+                    <h4>Please select the available time slots</h4>
+                    <div class="my-5">
+             
+                        <form id="appointment" action="/appointment"  method="post" >
+
+                            <div class="form-floating">
+                                <input class="form-control"  id="appointment_date" type="date"  name="appointment_date" placeholder="Appointment Date" data-sb-validations="required" required />
+                                <label for="dob" class="bold">Appointment Date</label>
+                                <div class="invalid-feedback" data-sb-feedback="dob:required">DOB is required.</div>    
+                            </div>
+                            <br/>
+                            <div >
+                                <select class="form-select" aria-label="Default select example" name = "time_slot">
+                                    <option selected>Time Slot</option>
+                                    <option value="9:00">9:00</option>
+                                    <option value="9:30">9:30</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="10:30">10:30</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="11:30">11:30</option>
+                                    <option value="12:00">12:00</option>
+                                    
+                                  </select>  
+                            </div>
+                       
+                            <br />
+                          
+                        
+                            <button class="btn btn-primary" id="submitButton" type="submit">Register</button>
+                        </form>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+        <%- include("layouts/footer.ejs") -%>
+        <%- include("layouts/scripts.ejs") -%>
+    </body>
+</html>

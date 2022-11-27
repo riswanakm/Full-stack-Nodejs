@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("layouts/head.ejs") -%>
+    <body>
+        <!-- Navigation-->
+        <%- include("layouts/navbar.ejs") -%>
+
+        <!-- Main Content-->
+        <div class="container-xxl courses my-6 py-6 pb-0">
+            <div class="container">
+                <div class="row g-4 justify-content-center">
+        <div class="col-lg-8 my-6 mb-0 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="bg-primary text-center p-5">
+                <h1 class="mb-4">Register here</h1>
+                
+                           
+                            <form id="singupForm" action="/signup" onsubmit='return validatePassword()' method="post" >
+                                <div class="form-floating">
+                                    <input class="form-control" id="user_name" name="user_name" type="text" placeholder="User Name" required />
+                                    <label for="user_name">User Name</label>
+                                    <div class="invalid-feedback" data-sb-feedback="name:required">User Name is required.</div>
+                                </div>
+                                <br>
+
+                              
+                                    <select class="form-select form-select-lg mb-3" id="user_type" name="user_type" required>
+                                        <option selected>Choose User Type</option>
+                                        <option value="driver">Driver</option>
+                                        <option value="examiner">Examiner</option>
+                                        <option value="admin">Admin</option>
+                                      </select>
+                                
+                                
+                                <div class="form-floating">
+                                    <input class="form-control" id="password" name="password" type="password" placeholder="Password"  required />
+                                    <label for="password">Password</label>
+                                    <div class="invalid-feedback" data-sb-feedback="pwd:required">Password is required.</div>        
+                                </div>
+
+                                <div class="form-floating">
+                                    <input class="form-control" id="confirmpwd" type="password" placeholder="Password"  required />
+                                    <label for="confirmpwd">Confirm Password</label>
+                                    <div style="color:red;" id = "pwd_not_match"></div>        
+                                </div>
+                           
+                                <br />
+                                
+                            
+                                <button class="btn btn-primary" id="submitButton" type="submit">Sign Up</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        </div>
+        </body>
+        <%-include ('layouts/footer');-%>
+      
+        <script>
+          
+
+            function validatePassword(){
+                var password = document.getElementById("password").value;
+                var confirm_password = document.getElementById("confirmpwd").value;
+                if(password != confirm_password) {
+                    document.getElementById("pwd_not_match").innerHTML = "Password Not Matched!";
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+
+        </script>
+        
+    </body>
+</html>
